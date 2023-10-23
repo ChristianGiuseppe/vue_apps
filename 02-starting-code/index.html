@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Vue Course Goals</h1>
+      <!--  <p>{{ courseGoal }}</p> {{ interpolation }} not working only in a view -->
+    </header>
+    <!-- That is the view where data is binding-->
+    <section id="user-goal"> 
+      <h2>My Course Goal</h2>
+      <!-- {{ interpolation }} is avialable only for HTML -->
+      <p>{{ courseGoalA }}</p>
+      
+      <!--[v-html] avoid to print tag html -->
+      <p v-html="courseGoalB" ></p>
+      <!-- for use databing as attribute need use [v-bind:attribute] -->
+      <p> Learn more <a v-bind:href="vueLink"> Vue</a>.</p> 
+
+      <!-- invoke method-->
+     
+    </section>
+  </body>
+</html>

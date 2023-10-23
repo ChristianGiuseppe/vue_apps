@@ -1,0 +1,59 @@
+ <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Vue Behind The Scenes</h1>
+    </header>
+    <!--VIRTUAL DOM-->
+    <!--Vue fa utilizzo di un concetto che chiama Virtual DOM, Vue gestisce il template del DOM
+        attraverso l'utilizzo dell'interpolazione v-bind e ecc. Vue aggiorna soltanto la parte interssata 
+        all'aggiornamento e non l'intero DOM. Vue utilizza un Virtual DOM per gestire il template.
+        Ha sotto il cofano un Virtual DOM che è una copia del DOM reale, quando viene aggiornato il DOM
+        reale viene aggiornato anche il Virtual DOM, Vue confronta il Virtual DOM con il DOM reale e
+        aggiorna soltanto la parte interessata. Vue utilizza un algoritmo molto efficiente per fare questo
+        confronto.
+    -->
+
+
+    <!--VUE INSTANCE LIFECYCLE-->
+    <!--tutto parte dal createApp({...}) e il mount con il codice HTML sul DOM-->
+    <!--questo è un modo per scrivere un template nella maggior parte dei casi si utilizza questo metodo
+        beforeCreate() e created() sono due metodi che vengono eseguiti prima che Vue venga creato 
+        dopo viene eseguito il beforeMount() viene eseguito dopo la compliazione del template poi viene eseguito il mount() 
+        che monta il template sul DOM, dopo viene eseguito il beforeUpdate() e l'update() che viene eseguito quando il template viene aggiornato
+        quando l'app viene smontata tutto il contenuto viene rimosso dal DOM e viene eseguito il beforeUnmount() e l'unmount()
+    -->
+    <section id="app">
+      <h2>How Vue Works</h2>
+      <!--
+        Vue ha una feature che permettere di recuperare informazioni dal DOM chiamato [refs]
+        è un attributo che non è predefinito nell'HTML quindi il browser 
+        non lo riconosce ma Vue si. Le refs si possono utilizzare per qualsiasi tag HTML
+        questo valore poi può essere preso dal JS tramite this.$refs.nomeRef
+      -->
+      <input type="text" ref="userText"> 
+
+
+      <!--Tecnica senza ref-->
+      <input type="text" @input="saveInput"  >
+      <button @click="setText">Set Text</button>
+      <p>{{ message }}</p>
+    </section>
+
+    <section id="app2">
+      <!--<p> {{message}} </p> Doesn't work -->
+    </section>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Vue Events</h1>
+    </header>
+    <section id="events">
+      <h2>Events in Action</h2>
+      <button v-on:click="add(10)">Add 10</button>
+      <button v-on:click="reduce(5)">Subtract 5</button>
+      <p>Result: {{ counter }}</p>
+      <!-- Ci sono casi in cui non solo voglio avere il valore ma anche impostare un valore in ingresso
+           in vue esiste un costrutto che ti permette sia di ascoltare l'input ma anche impostare i valori  memorizzato come in [v-value]
+           <input type="text" v-bind:value="name" v-on:input="setName($event, 'Nocerino')">
+           questo costrutto è chiamato [v-model] si può dire che una shortcut [v-value e v-bind]
+        -->
+      <input type="text" v-model="name">
+      <input type="text" v-model="lastName">
+      <!--[v-on] può essere sostituito con il simbolo @--->
+      <!--[v-bind] può essere sostituito con il simboll :value-->
+      <button @click="resetInput"> Reset Input</button>
+      <!-- se viene utilizzato il metodo per stampare il nome e il cognome allora abbiamo il problema che ogni volta che cambia
+         l'oggetto bindato e qualsiasi parametro questo verrà refreshato
+           <p>Your Name: {{ outputFullName() }}</p>
+        -->
+
+        <!-- without parenthesis  verrà aggioranato solo quando verrà modificato il campo associato in questo caso il nome-->
+      <p>Your Name: {{ fullName }}</p>
+    </section>
+  </body>
+</html>
