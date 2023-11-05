@@ -1,6 +1,6 @@
 <template>
     <li>
-      <h2>{{ name }} {{ friendIsFavorite === '1' ? 'Favorite' : ''}}</h2>
+      <h2>{{ name }} {{ isFavorite  ? 'Favorite' : ''}}</h2>
       <button @click="toggleFavorite"> Toogle Favorite </button>
       <button @click="toggleDetails">{{ detailsAreVisible ? 'Hide' : 'Show' }} Details</button>
       <ul v-if="detailsAreVisible">
@@ -13,22 +13,58 @@
           {{ emailAddress }}
         </li>
       </ul>
+      <button @click.prevent="deleteElement">Delete</button>
     </li>
   </template>
   
   <script>
-  export default {
-    props: [
-      'name',
-      'phoneNumber',
-      'emailAddress',
-      'isFavorite'
-    ],
+  export default {  // valori props: String, Number, Boolean, Array, Object, Date, Function, Symbol
+    // props: [
+    //   'name',
+    //   'phoneNumber',
+    //   'emailAddress',
+    //   'isFavorite'
+    // ],
+    // alternativa di passsare i parametri 
+    props:{
+        id: {
+            type: String,
+            required: true
+        },
+        name: {
+            type: String,
+            required: true
+        },
+        phoneNumber: {
+            type: String,
+            required: true
+        },
+        emailAddress: {
+            type: String,
+            required: true
+        },
+        isFavorite: {
+            type: Boolean,
+            required: false, //questo valore è non required questo vuol dire che praticamente può essere passato o meno
+            default: false,
+         
+        }
+    },
+    // rappresenta il modo in cui il componente può comunicare con il padre
+    emits: ['toggle-favorite', 'delete-friend'],
+    // emits: {
+    //     'toggle-favorite': function(id){
+    //         if(id){
+    //             return true;
+    //         }
+    //         return false;
+    //     }
+    // },
     data() {
       return {
         detailsAreVisible: false,
         /// per modificare il valore di un dato bisogna assegnarlo a una variabile interna 
-        friendIsFavorite: this.isFavorite
+        //friendIsFavorite: this.isFavorite
       };
     },
     methods: {
@@ -36,11 +72,10 @@
         this.detailsAreVisible = !this.detailsAreVisible;
       },
       toggleFavorite() {
-        if(this.friendIsFavorite === '1') {
-          this.friendIsFavorite = '0';
-        } else {
-          this.friendIsFavorite = '1';
-        }
+        this.$emit('toggle-favorite', this.id);
+      },
+      deleteElement(){
+          this.$emit('delete-friend', this.id);
       }
     }
   };
