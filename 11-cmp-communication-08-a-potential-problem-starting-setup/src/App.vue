@@ -1,10 +1,17 @@
+<!--
+  il meccanisco di provide e inject non dovrebbe essere in metodo di default per passare i parametri e gli eventi ma bisogna utilizzare i props e il passaggio del metodo conviene utilizzarlo nel momento in cui devi passarlo per più componenti figli
+  UTILIZZALO CON SAGGEZZA !!
+-->
 <template>
   <div>
     <active-element
       :topic-title="activeTopic && activeTopic.title"
       :text="activeTopic && activeTopic.fullText"
     ></active-element>
-    <knowledge-base :topics="topics" @select-topic="activateTopic"></knowledge-base>
+    <!--Uno dei problemi che ci possiamo trovare ad affrontare durante la realizzazione un progetto grande in vue potrebbe comportare il problema dei passaggio dei parametri in maniere innestata tra i vari componenti 
+     in questo caso specifico viene passato il topic   :topics="topics" in questo caso entra in gioco una feature che ci fornisce vue.js [PROVIDE & INJECT] quindi prossiamo fornire i dati in una sezione ben specifica e viene iniettata in altre parti
+    -->
+    <knowledge-base @select-topic="activateTopic"></knowledge-base>
   </div>
 </template>
 
@@ -31,6 +38,11 @@ export default {
       ],
       activeTopic: null,
     };
+  },
+  //in questo caso abbiamo fornito dei dati ma è possibile fornire anche metodi e funzioni.
+  provide: {
+    topics:  this.topics,
+    selectTopic: this.activateTopic
   },
   methods: {
     activateTopic(topicId) {
