@@ -41,7 +41,6 @@ export default {
       this.teamName = selectItem.name;
     }
   },
-
   created() {
     this.loadMemembers(this.teamId);
   },
