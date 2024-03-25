@@ -1,7 +1,7 @@
 import { createStore } from 'vuex';
-import rootMutations from './mutations';
-import rootGetters from './getters';
-import rootActions from './actions';
+import rootMutations from './mutations.js';
+import rootGetters from './getters.js';
+import rootActions from './actions.js';
 import counterModule from './counter/index.js';
 //per ogni applicazione posso avere un solo store ma questi possono essere suddivisi in più moduli
 const store = createStore({
