@@ -1,0 +1,6 @@
+npm install --save vuex@next
+Cos’è Vuex?
+Vuex è una libreria per la gestione dello stato globale.
+Per lo stato si intendono i dati per cui un’applicazione ha bisogno di dati che influenzano ciò che l’utente vede sullo schermo. Quindi si può pensare lo stato come dei dati reattivi per cui possono cambiare e dove tali cambiamenti influenzano lo schemo.
+ABiimao due tipi di stato uno stato locale e uno stato globale. Lo stato locale è lo stato dei dati che gestisci all’interno di un componente e influenza soltanto quel componente. D’altra parte abbiamo lo stato globale che sono dati che possono gestire i componenti a livello globale. Quindi sono dati di cui hai bisogno all’interno di tutto l’app come lo stato di autenticazione. Ed è qui che la libreria Vuex può entrare in gioco e aiutarci
+Perché Vuex in questo caso questo state management può essere utility ad evitare di iniettare dei dati in layer più profondi senza il suo utilizzo quello che possiamo trovare praticamente è un insieme di componenti pieni di dati e che hanno molta logica ma potremmo avere anche un comportamento imprevedibile e potrebbe essere soggetto ad errori. Ma ci fornisce alcune regole chiare su dove lo stato dovrebbe essere gestito e su come dovrebbe essere condiviso e gestito e ovviamente anche meno soggetto a errori
