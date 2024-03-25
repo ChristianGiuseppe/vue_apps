@@ -21,6 +21,7 @@ export default {
         AddResource
     },
     data() {
+        //con Vuex possiamo gestire questi elementi a livello globale
         return {
             selectedTab: 'stored-resources',
             storedResources: [
@@ -39,6 +40,7 @@ export default {
     },
     //in questo modo forniamo le risorse a tutti i layer inferiori
     // ma anche metodi
+    //
     provide() {
         return {
             resources: this.storedResources,

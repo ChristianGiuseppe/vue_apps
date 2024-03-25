@@ -25,4 +25,10 @@ const app = createApp(App);
 app.use(router);
 app.component('base-modal', BaseModal);
 
-app.mount('#app');
+router.isReady().then(function () {
+    app.mount('#app');
+}); 
+
+
+
+
